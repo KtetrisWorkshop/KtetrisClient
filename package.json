@@ -23,7 +23,8 @@
   "bugs": {},
   "homepage": "",
   "dependencies": {
-    "excalibur": "0.32.0"
+    "excalibur": "0.32.0",
+    "fp-ts": "^2.16.11"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
