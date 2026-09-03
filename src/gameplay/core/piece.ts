@@ -18,15 +18,15 @@ export function matrixToString(matrix: Matrix) {
 }
 
 export function getShape(type: number, dir: number): Matrix {
-  return toMatrix(pieceTable[type][dir] & 0x0000ffff);
+  return toMatrix(pieceTable[type][dir] & 0x0000ffff, type);
 }
 
 export function getRotateMask(type: number, dir: number): Matrix {
-  return toMatrix((pieceTable[type][dir] >> 16) & 0x0000ffff);
+  return toMatrix((pieceTable[type][dir] >> 16) & 0x0000ffff, type);
 }
 
-function toMatrix(code: number): Matrix {
+function toMatrix(code: number, block: number): Matrix {
   return range(0, 3).map((r) =>
-    range(0, 3).map((c) => +!!(code & (1 << (15 - (r * 4 + c))))),
+    range(0, 3).map((c) => (code & (1 << (15 - (r * 4 + c))) ? block : 0)),
   );
 }
