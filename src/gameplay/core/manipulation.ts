@@ -5,6 +5,6 @@ export function moveDown(piece: FallingPiece, board: Board): FallingPiece {
     if (board.landsOnSurface(piece)) {
         return piece;
     } else {
-        return { ...piece, y: piece.y + 1 }
+        return { ...piece, y: piece.y - 1 }
     }
 }
