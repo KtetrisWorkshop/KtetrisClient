@@ -64,7 +64,7 @@ export class BitField {
         return new BitField(width, height, bitSpan);
     }
 
-    public mask([x, y]: readonly [number, number], field: BitField): BitField {
+    public mask([x, y]: [number, number], field: BitField): BitField {
         const masked = this.slice([x, y], [x + field.width - 1, y + field.height - 1]);
         const masking = field.slice([0, 0], [masked.width - 1, masked.height - 1]);
         return new BitField(masked.width, masked.height, (masked.bits & masking.bits));
@@ -74,7 +74,7 @@ export class BitField {
         const data = range(0, this.height - 1).reverse().map((y) =>
             range(0, this.width - 1).reverse().map((x) => this.indexAt(x, y))
         );
-        return new Matrix(this.width, this.height, data);
+        return new Matrix(data);
     }
 }
 
