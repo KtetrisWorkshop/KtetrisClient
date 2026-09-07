@@ -1,4 +1,4 @@
-import { Bit, BitField } from "../common/bitfield";
+import { Bit, BitField } from "../../common/bitfield";
 import { MoveDirection } from "./manipulation";
 import { FallingPiece } from "./piece";
 
@@ -20,11 +20,13 @@ export class Board {
         return this.playfield.indexAt(x, y) == Bit.One;
     }
 
-    public touchesFrame(piece: FallingPiece, direction: MoveDirection) { switch (direction) {
-        case MoveDirection.Down: return piece.y == 0;
-        case MoveDirection.Left: return piece.x + direction == 0;
-        case MoveDirection.Right: return piece.x + direction + piece.tetromino[piece.facing].width == this.width - 1;
-    }}
+    public touchesFrame(piece: FallingPiece, direction: MoveDirection) {
+        switch (direction) {
+            case MoveDirection.Down: return piece.y == 0;
+            case MoveDirection.Left: return piece.x + direction == 0;
+            case MoveDirection.Right: return piece.x + direction + piece.tetromino[piece.facing].width == this.width - 1;
+        }
+    }
 
     public touchesBlock(piece: FallingPiece, direction: MoveDirection): boolean {
         const tetromino = piece.tetromino[piece.facing];

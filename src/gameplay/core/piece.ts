@@ -1,4 +1,4 @@
-import { BitField } from "../common/bitfield";
+import { BitField } from "../../common/bitfield";
 import { Tetromino } from "./polyominoes";
 
 export enum Facing { Up, Left, Down, Right }
