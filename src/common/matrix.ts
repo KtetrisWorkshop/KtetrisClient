@@ -4,9 +4,9 @@ export class Matrix<T> {
 
     public constructor(
         public readonly data: T[][]
-    ) { 
+    ) {
         this.height = data.length;
-        this.width = data.at(0)!.length;
+        this.width = data.at(0)?.length ?? 0;
     }
 
     public toString() {
