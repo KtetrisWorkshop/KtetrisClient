@@ -26,20 +26,20 @@ export class Board {
         case MoveDirection.Right: return piece.x + direction + piece.tetromino[piece.facing].width == this.width - 1;
     }}
 
-    public touchesBlock(piece: FallingPiece, direction: MoveDirection) {
+    public touchesBlock(piece: FallingPiece, direction: MoveDirection): boolean {
         const tetromino = piece.tetromino[piece.facing];
         const maxX = tetromino.width - 1;
         const maxY = tetromino.height - 1;
         switch (direction) {
             case MoveDirection.Down: return this.playfield.mask([piece.x, piece.y + maxY - 1],
                 tetromino.slice([0, maxY], [maxX, maxY])
-            )
+            ).isNonZero()
             case MoveDirection.Left: return this.playfield.mask([piece.x - 1, piece.y],
                 tetromino.slice([0, 0], [0, maxY])
-            )
+            ).isNonZero()
             case MoveDirection.Right: return this.playfield.mask([piece.x + maxX + 1, piece.y],
                 tetromino.slice([maxX, 0], [maxX, maxY])
-            )
+            ).isNonZero()
         }
     }
 }

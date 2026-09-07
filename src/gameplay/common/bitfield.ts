@@ -23,6 +23,10 @@ export class BitField {
         return this.bits == Bit.Zero;
     }
 
+    public isNonZero(): boolean {
+        return this.bits != Bit.Zero;
+    }
+
     private position(x: number, y: number) {
         return x + y * this.width;
     }
@@ -53,7 +57,7 @@ export class BitField {
         const height = y1 - y0 + 1;
 
         const masking = (Bit.One << width) - 1;
-        
+
         const bitSpan = range(y0, y1).reverse().map((y) => {
             const maskedOff = this.position(x0, y);
             return (this.bits & (masking << maskedOff)) >> maskedOff;
