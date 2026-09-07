@@ -24,7 +24,7 @@
   "homepage": "",
   "dependencies": {
     "excalibur": "0.32.0",
-    "fp-ts": "^2.16.11"
+    "remeda": "^2.46.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",

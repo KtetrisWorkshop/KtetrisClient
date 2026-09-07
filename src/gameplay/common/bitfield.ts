@@ -1,7 +1,5 @@
-import { range } from "fp-ts/NonEmptyArray";
-import { clamp } from "fp-ts/Ord";
+import { clamp, range } from "remeda";
 import { Matrix } from "./matrix";
-import { Ord } from "fp-ts/number";
 
 export const enum Bit { Zero = 0, One = 1 }
 export type BitSpan = number;
@@ -37,10 +35,10 @@ export class BitField {
     }
 
     private window([x0, y0]: [number, number], [x1, y1]: [number, number]) {
-        x0 = clamp(Ord)(0, this.width - 1)(x0);
-        y0 = clamp(Ord)(0, this.height - 1)(y0);
-        x1 = clamp(Ord)(0, this.width - 1)(x1);
-        y1 = clamp(Ord)(0, this.height - 1)(y1);
+        x0 = clamp(x0, {min: 0, max: this.width - 1});
+        y0 = clamp(y0, {min: 0, max: this.height - 1});
+        x1 = clamp(x1, {min: 0, max: this.width - 1});
+        y1 = clamp(y1, {min: 0, max: this.height - 1});
 
         if (x0 > x1) {
             [x0, x1] = [x1, x0];
